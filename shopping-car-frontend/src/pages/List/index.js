@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Car from '../../components/Car';
 import { getAllCars } from './../../store/fetchActions/index';
 import { addItem } from './../../store/ducks/cart/index';
+import { showMessage, hideMessage } from '../../store/ducks/layout';
 
 export default function List() {
 	const cars = useSelector((state) => state.cars);
@@ -14,6 +15,10 @@ export default function List() {
 
 	function addToCart(car){
 		dispatch(addItem(car))
+		dispatch(showMessage('add'))
+		setTimeout(() => {
+			dispatch(hideMessage());
+		}, 2500);
 	}
 	return (
 		<div className="container-fluid">

@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Add from './Add';
 import List from './List';
 import Cart from './Cart';
 
+
+
 function PrivateRouter({children, redirectoTo}) {
-	return false ? children : <Navigate to={redirectoTo} />
+	const isAuthenticate = useSelector(state => state.auth.isAuthenticate)
+	return isAuthenticate ? children : <Navigate to={redirectoTo} />
 }
 
 export default () => (

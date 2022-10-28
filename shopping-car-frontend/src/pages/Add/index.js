@@ -19,7 +19,7 @@ export default function Add() {
 
 		setForm({ name: '', url: '' });
 
-		dispatch(showMessage('add'));
+		dispatch(showMessage('add_item'));
 
 		setTimeout(() => {
 			dispatch(hideMessage());
